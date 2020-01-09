@@ -1,3 +1,4 @@
+const {SQL} = require('sql-template-strings');
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -7,7 +8,7 @@ const pool = new Pool({
   database: 'bootcampx'
 });
 
-pool.query(`
+pool.query(SQL`
   SELECT DISTINCT teachers.name as teacher, cohorts.name as cohort
   FROM assistance_requests
   JOIN teachers ON teacher_id = teachers.id
